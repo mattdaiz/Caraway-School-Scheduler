@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit Account</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="../static/css/adminpage.css" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body>
+
+
+	<nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+		<img src="../static/img/car.png" width="70" height="60" alt="">
+		
+
+		<h2>Admin</h2>
+
+		<div></div>
+	</nav>
+
+
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<p></p>
+						<p></p>
+						<p></p>
+						<li class="nav-item">
+							<a class="nav-link" id="dash" href="adminpage">
+								<span data-feather="home"></span>
+								<span class="sr-only"></span>
+								Dashboard
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link  active" href="admin-editaccount">
+								<span data-feather="user"></span>
+								Edit Accounts
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin-schedule">
+								<span data-feather="file"></span>
+								Schedule
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin-createaccount">
+								<span data-feather="clipboard"></span>
+								Create Account
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin-statistics">
+								<span data-feather="bar-chart-2"></span>
+								Statistics
+							</a>
+						</li>
+						<li class="nav-item" href="login">
+							<a class="nav-link" href="login">
+								<span data-feather="layers"></span>
+								Logout
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+			<h1 class="h2" id="name">Edit Account - Login</h1>
+		</div>
+
+
+		<!-- Navigation Tabs -->
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="admin-editaccount">
+				<span data-feather="lock" style="margin-right: 5px"></span>Login Info</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="admin-editaccount-Facilitator">
+				<span data-feather="user" style="margin-right: 5px"></span>Facilitator Info</a>
+			</li>
+		</ul>
+
+		<div class="container bg-light " style="padding: 20px;" align="center">
+			<!-- Username text box and yellow search button -->
+			<form method="POST", action="admin-editaccount">
+				<h3><span class="label label-default"></span></h3>
+				<div class="col-md-6">
+					<h3 class="text-left">Enter Username</h3>
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<input class="form-control" placeholder="Username" name="username">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-md btn-warning" type="submit">Search</button>
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="E.g. 'bob mom red'">
+								Help
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<!-- Table to Display Login Information -->
+			<div class="form-group">
+				<table class="table table-hover table-light table-bordered table-striped" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Username</th>
+							<th scope="col">Password</th>
+							<th scope="col">Account Type</th>
+							<th scope="col">Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for account in accounts %}
+						<tr>
+							<th scope="row"> {{ loop.index }} </th>
+							<td class="user_input">{{ account[0] }}</td>
+							<td class="pass_input">{{ account[1] }}</td>
+							<td class="type_input">{{ account[2] }}</td>
+							<td> <button type="button" class="btn-warning" data-toggle="modal" data-target='#accountInfo'>Update</button> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+
+	<!-- Modal Edit -->
+	<form id="form_id" method="POST" action="admin-editaccount-delete">
+		<div class="modal fade" id="accountInfo" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<!-- Flask Method -->
+
+					<!-- Username -->
+					<div class="modal-body">
+						<div class="form-group row">
+							<label for="username_edit" class="col-sm-2 col-form-label">Username</label>
+							<div class="col-sm-10">
+								<input name="username" id="user_name_form" type="text" class="form-control user_input" placeholder="Username"readonly>
+							</div>
+						</div>
+
+
+						<!-- Password -->
+						<div class="form-group row">
+							<label for="password_edit" class="col-sm-2 col-form-label">Password</label>
+							<div class="col-sm-10">
+								<input name="password" type="text" class="form-control pass_input" placeholder="Password" >
+							</div>
+						</div>
+
+						<!-- Account Type -->
+						<div class="form-group row">
+							<label for="type_edit" class="col-sm-2 col-form-label">Account Type</label>
+							<div class="col-sm-10">
+								<select name="accountType" class="custom-select custom-select-md mb-3" id="type_input">
+									<option></option>
+									<option value="Admin">Admin</option>
+									<option value="Board Member">Board Member</option>
+									<option value="Teacher">Teacher</option>
+									<option value="Family">Family</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Buttons: Close/Delete/Save -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+
+						<button type="button" class="btn btn-danger delete_account_btn">Delete</button>
+
+
+						<button type="button" class="btn btn-success edit_account_btn">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal Confirm - Delete -->
+		<div class="modal fade" id="confirm_delete_account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						Confirm Deletion
+					</div>
+					<div class="modal-body">
+						Are you sure you want to delete the following account?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button name="confirm" value="delete" type="submit" class="btn btn-success success confirm_delete_btn">Confirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Confirm - Save -->
+		<div class="modal fade" id="confirm_edit_account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						Confirm Edit
+					</div>
+					<div class="modal-body">
+						Are you sure you want to edit the following account?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button name="confirm" value="save" type="submit" class="btn btn-success success confirm_edit_btn">Confirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<!-- Icons -->
+	<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	<script>
+		feather.replace();
+	</script>
+
+
+	<!--jquery-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--highchart for statistics-->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- Load on script -->
+	<script>
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		});
+	</script>
+
+	<script src="../static/js/admin.js"></script>
+
+
+
+</body>
+</html>

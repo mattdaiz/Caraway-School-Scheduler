@@ -1,0 +1,28 @@
+body {
+	background: url(../img/c2.jpg) no-repeat center center fixed; 
+	background-size: cover;
+	font-family: "Roboto";
+}
+
+.center {
+	display: block;
+	margin: 0 auto;
+}
+
+.center_login {
+	padding-top: 200px;
+}
+
+.pad_login{
+	padding: 15px;
+}
+
+.navbar-brand-center {
+	margin: 0 auto;
+}
+
+#login_avatar {
+	padding: 5px;
+}
+
+

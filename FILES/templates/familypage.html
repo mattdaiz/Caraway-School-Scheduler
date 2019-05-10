@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Family</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="../static/css/teacherpage.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+    <nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+        <img src="../static/img/car.png" width="70" height="60" alt="">
+        
+
+        <h2 class="">Family</h2>
+
+        <div></div>
+    </nav>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="dash" href="familypage">
+                                <span data-feather="home"></span>
+                                <span class="sr-only"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-accountinfo">
+                                <span data-feather="user"></span>
+                                Account Info
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-schedule">
+                                <span data-feather="file"></span>
+                                Schedule
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-statistics">
+                                <span data-feather="bar-chart-2"></span>
+                                Statistics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-donate">
+                                <span data-feather="bar-chart-2"></span>
+                                Donate Hours
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">
+                                <span data-feather="layers"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+
+        <div class="container offset-sm-3" id="div_content" align="center">
+
+            <h1>Welcome {{ login }}</h1>
+            <hr>
+
+            <h3>Please ensure to complete your required hours for the month</h3>
+            
+            <div class="row offset-sm-3" style="margin-top: 100px" align="center">
+                <div class="card bg-primary" style="width: 18rem; margin-right: 25px">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h3>Current Monthly Hours</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><br><h3>{{ currentHours }}</h3></li>
+                    </ul>
+                </div>
+
+                <br>
+                
+                <div class="card bg-danger" style="width: 18rem; margin-right: 25px">
+                    <div class="card-header text-center bg-danger text-white">
+                        <h3>Required Monthly Hours</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><br><h3>{{ neededMonthlyHours }}</h3></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <br>
+            <div class="container" align="center">
+                <h3>Upcoming Shifts</h3>
+                <br>
+                {% if upcoming == 0 %}
+                <p>You have no upcoming shifts this week</p>
+                {% else %}
+                {% for i in upcoming %}
+                <p>{{ i[0] }} shift in room {{ i[1] }} on {{ i[2] }} - {{ i[3] }} - {{ i[4] }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <hr>
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- Icons -->
+        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+        <script>
+            feather.replace();
+        </script>
+
+
+
+        <!-- Dummy Chart -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+        <!-- Load own script -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!--
+        <script src="../static/js/mainpage.js"></script>
+        -->
+
+
+
+</body>
+</html>

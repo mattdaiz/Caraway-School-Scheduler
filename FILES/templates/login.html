@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Login</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="../static/css/login.css" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6D7993;">
+        <a class="navbar-brand-center" href="#">
+            <img src="../static/img/car.png" width="70" height="60" alt="">
+        </a>
+    </nav>
+
+
+    <div class="container center_login">
+        <div class="row">
+            <div class="col-sm-4 offset-4 pad_login" style="background-color: #FFFFFF;">
+                <img class="center" src="../static/img/person.png" width="100" height="100" alt="#" id="login_avatar">
+
+                <!--Flash message-->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+
+                <!--FLASK-->
+                <form method="POST" action="/main">
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-check">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-link float-right" data-toggle="modal" data-target="#exampleModal" id="help_button">Help</button>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-block btn-success">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Assistance</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="center" src="../static/img/admin.png" width="100" height="100" alt="#" id="login_avatar">
+                    <p class="text-center">Please Contact Karen at Admin@CarawaySchool.ca</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+    <!-- Load own script -->
+    <script src="../static/js/login.js"></script>
+
+</body>
+</html>

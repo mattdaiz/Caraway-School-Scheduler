@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Schedule Add Remove</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="../static/css/adminpage.css" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+
+	<nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+		<img src="../static/img/car.png" width="70" height="60" alt="">
+		
+
+		<h2 class="">Admin</h2>
+
+		<div></div>
+	</nav>
+
+
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<p></p>
+						<p></p>
+						<p></p>
+						<li class="nav-item">
+							<a class="nav-link" id="dash" href="adminpage">
+								<span data-feather="home"></span>
+								<span class="sr-only"></span>
+								Dashboard
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin-editaccount">
+								<span data-feather="user"></span>
+								Edit Accounts
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="admin-schedule">
+								<span data-feather="file"></span>
+								Schedule
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin-createaccount">
+								<span data-feather="clipboard"></span>
+								Create Account
+							</a>
+						</li>
+						<a class="nav-link " href="admin-statistics">
+							<span data-feather="bar-chart-2"></span>
+							Statistics
+						</a>
+					</li>
+					<li class="nav-item" href="login">
+						<a class="nav-link" href="login">
+							<span data-feather="layers"></span>
+							Logout
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h2" id="name">
+			Schedule Add Remove                 
+		</h1>
+	</div>
+
+	<form method="POST" action="admin-schedule-add">
+		<div class="container">
+
+			<!-- Form Name -->
+			<div class="text-center">
+				<h2><b>Schedule</b></h2>
+				<!--variables passed along and need to be stored-->
+
+				<input type="hidden" id="Year" name="Year" value="{{year}}">
+				<b>Year</b>: {{year}}
+				<input type="hidden" id="Month" name="Month" value="{{month}}">
+				<b>Month</b>: {{month}}
+				<input type="hidden" id="Day" name="Day" value="{{day}}">
+				<b>Day</b>: {{day}}
+				<input type="hidden" id="Room" name="Room" value="{{room}}">
+				<b>Room</b>: {{room}}
+				<input type="hidden" id="Username" name="Username" value="{{username}}">
+				<b>Username</b>: {{username}}
+			</div>
+			
+			<!-- Morning -->
+			<div class="row offset-sm-2">
+
+				<!-- Morning Time -->
+				<div class="col-sm-4 border">
+					<div class="text-center mt-4">	
+						<br> Morning 
+						<br>8:45 - 12:00
+					</div>
+				</div>
+
+				<!-- Morning Shifts -->
+				<div class="col-sm-6 border">
+					<div class="input-group p-1 my-1">
+						<input name="morningshift0" placeholder="Available" class="form-control text-center" type="text" value="{{actualMorning[0]}}" readonly>
+						<button type="submit" name="button" value="addmorning_shift0" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removemorning_shift0" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+
+					<div class="input-group p-1 my-1">
+						<input name="morningshift1" placeholder="Available" class="form-control text-center" type="text" value="{{actualMorning[1]}}" readonly>
+						<button type="submit" name="button" value="addmorning_shift1" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removemorning_shift1" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+
+					<div class="input-group p-1 my-1">
+						<input name="morningshift2" placeholder="Available" class="form-control text-center" type="text" value="{{actualMorning[2]}}" readonly>
+						<button type="submit" name="button" value="addmorning_shift2" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removemorning_shift2" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Lunch -->
+			<div class="row offset-sm-2">
+				<!-- Lunch Time -->
+				<div class="col-sm-4 border">
+					<div class="text-center mt-4">
+						<br> Lunch 
+						<br>11:50 - 1:00
+					</div>
+				</div>
+
+				<div class="col-sm-6 border">
+					<div class="input-group p-1 my-1">
+						<input name="lunchshift0" placeholder="Available" class="form-control text-center" type="text" value="{{actualLunch[0]}}" readonly>
+						<button type="submit" name="button" value="addlunch_shift0" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removelunch_shift0" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+
+					<div class="input-group p-1 my-1">
+						<input name="lunchshift1" placeholder="Available" class="form-control text-center" type="text" value="{{actualLunch[1]}}" readonly>
+						<button type="submit" name="button" value="addlunch_shift1" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removelunch_shift1" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+
+					<div class="input-group p-1 my-1">
+						<input name="lunchshift2" placeholder="Available" class="form-control text-center" type="text" value="{{actualLunch[2]}}" readonly>
+						<button type="submit" name="button" value="addlunch_shift2" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removelunch_shift2" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<!-- Afternoon -->
+			<div class="row offset-sm-2">
+				<!-- Afternoon Time -->
+				<div class="col-sm-4 border">
+					<div class="text-center mt-4">
+						<br> Afternoon
+						<br>12:50 - 3:45
+					</div>
+				</div>
+
+				<!-- Afternoon shift-->
+				<div class="col-sm-6 border">
+					<div class="input-group p-1 my-1">
+						<input name="afternoonshift0" placeholder="Available" class="form-control text-center" type="text" value="{{actualAfternoon[0]}}" readonly>
+						<button type="submit" name="button" value="addafternoon_shift0" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removeafternoon_shift0" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+
+					<div class="input-group p-1 my-1">
+						<input name="afternoonshift1" placeholder="Available" class="form-control text-center" type="text" value="{{actualAfternoon[1]}}" readonly>
+						<button type="submit" name="button" value="addafternoon_shift1" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removeafternoon_shift1" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>	
+
+					<div class="input-group p-1 my-1">
+						<input name="afternoonshift2" placeholder="Available" class="form-control text-center" type="text" value="{{actualAfternoon[2]}}" readonly>
+						<button type="submit" name="button" value="addafternoon_shift2" class="btn btn-sm btn-success"><span data-feather="check"></span></button>
+						<button type="submit" name="button" value="removeafternoon_shift2" class="btn btn-sm btn-danger"><span data-feather="x"></span></button>
+					</div>
+				</div>
+			</div>
+
+			<!--Flash message in header-->
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				{% for message in messages %}
+				<div class="text-center">
+					<h3 style="color: red">{{ message }}</h3>
+				</div>
+				{% endfor %}
+				{% endif %}
+				{% endwith %}
+
+			<!--Username Input for Admin-->
+			<!--First Name Last Name Input for Admin-->
+			<div class="container border" style="margin-top: 50px">
+				<div class="row">
+					<div class="col-sm-6">
+						<label class="control-label" style="margin-top: 20px"><h3>Username</h3></label>
+
+						<div class="input-group" style="margin-bottom: 20px">
+							<input name="searchlogin" placeholder="Username" class="form-control" type="text" value="">
+							<button name="button" value="search" class="btn btn-warning float-right" type="submit">Search</button>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<label class="control-label" style="margin-top: 20px"><h3>Facilitator</h3></label>
+
+						<div class="input-group" style="margin-bottom: 30px">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<input name="username_fill" placeholder="Username" class="form-control" type="text" id="user_fill" readonly >
+							<input name="firstname" placeholder="First Name" class="form-control" type="text" id="first_fill" readonly>
+							<input name="lastname" placeholder="Last Name" class="form-control" type="text" id="last_fill" readonly>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+
+			<!--display table for showing all the faciliators-->
+			<div class="form-group">
+				<table class="table table-hover table-light table-bordered table-striped" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">ID</th>
+							<th scope="col">Username</th>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">Facilitator/Child</th>
+							<th scope="col">Option</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						{% for account in accounts %}
+						<tr>
+							<th scope="row"> {{ loop.index }}</th>
+							<td class="id_input">{{ account[0] }}</td>
+							<td class="username_input">{{ account[1] }}</td>
+							<td class="first_input">{{ account[2] }}</td>
+							<input type="hidden" name="firstname">
+							<td class="last_input">{{ account[3] }}</td>
+							<input type="hidden" name="lastname">
+							<td class="type_input">{{ account[4] }}</td>
+							<td> <button type="button" class="btn-info button">Select</button> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+</main>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+	feather.replace();
+</script>
+
+
+
+<!-- Dummy Chart -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<!-- Load own script -->
+<!--jquery-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--highchart for statistics-->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="../static/js/schedule_add.js"></script>
+
+
+
+</body>
+</html>

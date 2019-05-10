@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="../static/css/adminpage.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+
+
+    <nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+        <img src="../static/img/car.png" width="70" height="60" alt="">
+        
+
+        <h2 class="">Board Member</h2>
+
+        <div></div>
+    </nav>
+
+
+
+
+    <!--
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+          <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <a class="nav-link" href="#">Sign out</a>
+            </li>
+          </ul>
+        </nav>
+    -->
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <li class="nav-item">
+                            <a class="nav-link" id="dash" href="boardpage">
+                                <span data-feather="home"></span>
+                                <span class="sr-only"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="board-schedule">
+                                <span data-feather="file"></span>
+                                Schedule
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="board-statistics">
+                                <span data-feather="bar-chart-2"></span>
+                                Statistics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">
+                                <span data-feather="layers"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2" id="name">Statistics</h1>
+        </div>
+
+
+        <div class="container" style="margin-bottom: 5px">
+            <div class="row">
+                <div class="col-sm-4 offset-sm-1">
+                <form method="POST" action="board-statistics">
+                        <button name="button" value="prev_year" class="btn btn-dark" type="submit"><span data-feather="chevron-left"></span></button>
+                        <button name="button" value="next_year" class="btn btn-dark" type="submit"><span data-feather="chevron-right"></span></button>
+                        <button name="button" value="current_year" class="btn btn-dark" type="submit">Current</button>
+                    </form>
+                </div>
+
+            <!--
+            <div class="col-sm-2 offset-sm-4">
+                <button class="btn btn-dark">Yearly</button>
+                <button class="btn btn-dark">Monthly</button>
+            </div>
+        -->
+
+    </div>
+</div>
+
+<div id="container"  align="center" style="min-width: 310px; height: 600px; width: 1200px; margin: 0 auto">
+    <div id="{{ chartID|safe }}"" class="chart" style="width: 900px"></div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace();
+</script>
+
+<script>
+    var chart_id = {{ chartID|safe }}
+    var series = {{ series|safe }}
+    var title = {{ title|safe }}
+    var xAxis = {{ xAxis|safe }}
+    var yAxis = {{ yAxis|safe }}
+    var chart = {{ chart|safe }}
+</script>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--Highcharts-->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<!-- statisticspage script-->
+<script src="../static/js/statisticspage.js"></script>
+
+
+
+</body>
+</html>

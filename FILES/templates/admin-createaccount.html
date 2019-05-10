@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="../static/css/adminpage.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+
+    <nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+        <img src="../static/img/car.png" width="70" height="60" alt="">
+        
+
+        <h2 class="">Admin</h2>
+
+        <div></div>
+    </nav>
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <li class="nav-item">
+                            <a class="nav-link" id="dash" href="adminpage">
+                                <span data-feather="home"></span>
+                                <span class="sr-only"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-editaccount">
+                                <span data-feather="user"></span>
+                                Edit Accounts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-schedule">
+                                <span data-feather="file"></span>
+                                Schedule
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="admin-createaccount">
+                                <span data-feather="clipboard"></span>
+                                Create Account
+                            </a>
+                        </li>
+                        <a class="nav-link " href="admin-statistics">
+                            <span data-feather="bar-chart-2"></span>
+                            Statistics
+                        </a>
+                    </li>
+                    <li class="nav-item" href="login">
+                        <a class="nav-link" href="login">
+                            <span data-feather="layers"></span>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2" id="name">Create Account</h1>
+    </div>
+
+
+
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="admin-createaccount">
+                <span data-feather="lock" style="margin-right: 5px"></span>Create Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin-createaccount-Facilitator">
+                    <span data-feather="user" style="margin-right: 5px"></span>Create Facilitator/Child</a>
+                </li>
+            </ul>
+
+            
+
+            <div class="container border" style="margin-top: 10px; width: 500px" align="center">
+
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend><center><h2><b>Registration Form</b></h2></center></legend>
+
+
+                    <form method="POST" action="admin-createaccount">
+
+                        <!-- Text input-->
+
+                        <div class="form-group" >
+                            <label class="control-label">Username</label>
+                            <div class="col-sm-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="username" placeholder="Username" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <div class="col-sm-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="password" placeholder="Password" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Text input-->
+
+                        <div class="form-group">
+                            <label class="control-label">Type of Account</label>
+                            <div class="col-sm-8 selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="type" class="form-control selectpicker" required>
+                                        <option value="">Select Type of Account</option>
+                                        <option>Admin</option>
+                                        <option>Board Member</option>
+                                        <option>Teacher</option>
+                                        <option>Family</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <div class="col-sm-8">
+                                <br>
+                                <input type="submit" value="Create Account" class="btn btn-block btn-success" onclick="createAccount()">
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </fieldset>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                
+            </div>
+        </div><!-- /.container -->
+        <!-- Icons -->
+        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+        <script>
+            feather.replace();
+        </script>
+
+
+
+        <!-- Dummy Chart -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+        <!-- Load own script -->
+        <!--jquery-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--highchart for statistics-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+
+
+
+    </body>
+    </html>

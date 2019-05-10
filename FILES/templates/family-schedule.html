@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Family</title>
+    <!-- Kalendae -->
+    <link rel="stylesheet" href="../static/kalendae/kalendae.css" type="text/css" charset="utf-8">
+    <script src="../static/kalendae/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="../static/css/teacherpage.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+
+    <nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+        <img src="../static/img/car.png" width="70" height="60" alt="">
+        
+
+        <h2 class="">Family</h2>
+
+        <div></div>
+    </nav>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <li class="nav-item">
+                            <a class="nav-link" id="dash" href="familypage">
+                                <span data-feather="home"></span>
+                                <span class="sr-only"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-accountinfo">
+                                <span data-feather="user"></span>
+                                Account Info
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="family-schedule">
+                                <span data-feather="file"></span>
+                                Schedule
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-statistics">
+                                <span data-feather="bar-chart-2"></span>
+                                Statistics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="family-donate">
+                                <span data-feather="bar-chart-2"></span>
+                                Donate Hours
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">
+                                <span data-feather="layers"></span>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <!--Kalendae stuff-->
+    <!--ID of the calendar that is later inserted in the scheduler.js  <div class="bg-light form-row" style="padding: 20px;" align="center"> -->
+    <div class="container">
+        <div class="row offset-sm-2" style="margin-top: 100px">
+            <!--Calendars-->
+
+            <div class="card bg-primary" style="width: 18rem; margin-right: 25px">
+                <div class="card-header text-center bg-primary text-white">
+                    <h3>Blue</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><div class="text-center" id="Blue"></div></li>
+                </ul>
+            </div>
+
+            <div class="card bg-secondary" style="width: 18rem; margin-right: 25px">
+                <div class="card-header text-center bg-secondary text-white">
+                    <h3>Grey</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><div class="text-center" id="Grey"></div></li>
+                </ul>
+            </div>
+
+            <div class="card" style="width: 18rem; background-color: #6f5499">
+                <div class="card-header text-center text-white">
+                    <h3>Purple</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><div class="text-center" id="Purple"></div></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row offset-sm-2" style="margin: 80px 0px 0px 345px">
+
+            <div class="card bg-danger" style="width: 18rem;margin-right: 25px">
+                <div class="card-header text-center bg-danger text-white">
+                    <h3>Red</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><div class="text-center" id="Red"></div></li>
+                </ul>
+            </div>
+
+            <div class="card bg-success" style="width: 18rem;">
+                <div class="card-header text-center bg-success text-white">
+                    <h3>Green</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><div class="text-center" id="Green"></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal content for schedulign the shift, teh date will be passed to it -->
+    <!--in future will need to pass username as well for tracking-->
+    <form method="POST" action="/family-schedule-add">
+        <!-- variables that will be stored and passed on-->
+        <input type="hidden" id="Year" name="Year">
+        <input type="hidden" id="Month" name="Month">
+        <input type="hidden" id="Day" name="Day">
+        <input type="hidden" id="Room" name="Room">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Schedule for the Day</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <style>
+                                div .YearSelected, .MonthSelected, .DaySelected, .RoomSelected {
+                                    display: inline;
+                                }
+                            </style>
+                            Scheduling for:
+                            <p></p>
+                            <!-- Class DateSelected will recieve the variable date from js-->
+                            Year Month Day
+                            <br>
+                            <div class="YearSelected">/</div>
+                            <div class="MonthSelected">/</div>
+                            <div class="DaySelected"></div>
+                            <br>
+                            Room:
+                            <div class="RoomSelected"></div>
+                        </div>
+                        <div class="container">
+                            <button type="submit" class="btn btn-secondary">Yes</button> <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>  <br>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+
+
+    <!--jQuery first, then Popper.js, then Bootstrap JS-->
+    <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+    <!-- own js -->
+    <script src="../static/js/mainpage.js"></script>
+
+    <!--Full calendar script-->
+    <script src="../static/js/schedule.js"></script>
+
+
+</body>
+</html>

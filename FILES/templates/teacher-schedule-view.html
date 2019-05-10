@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Schedule</title>
+	<!-- Kalendae -->
+	<link rel="stylesheet" href="../static/kalendae/kalendae.css" type="text/css" charset="utf-8">
+	<script src="../static/kalendae/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="../static/css/schedulepage.css" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+
+
+	<nav class="navbar  sticky-top navbar-light flex-md-nowrap p-0" style="background-color: #6D7993;">
+
+		<img src="../static/img/car.png" width="70" height="60" alt="">
+
+
+		<h2 class="">Teacher</h2>
+
+		<div></div>
+	</nav>
+
+
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<p></p>
+						<p></p>
+						<p></p>
+						<li class="nav-item">
+							<a class="nav-link " id="dash" href="teacherpage">
+								<span data-feather="home"></span>
+								<span class="sr-only"></span>
+								Dashboard
+							</a>
+							<li class="nav-item">
+								<a class="nav-link active" href="teacher-schedules">
+									<span data-feather="file"></span>
+									Schedules
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="teacher-statistics">
+									<span data-feather="bar-chart-2"></span>
+									Statistics
+								</a>
+							</li>
+							<li class="nav-item" href="login">
+								<a class="nav-link" href="login">
+									<span data-feather="layers"></span>
+									Logout
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+
+
+
+
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+			<div class="container">
+
+				<!-- Form Name -->
+				<div class="text-center">
+					<h2><b>Schedule</b></h2>
+					<!--variables passed along and need to be stored-->
+
+					<input type="hidden" id="Year" name="Year" value="{{year}}">
+					<b>Year</b>: {{year}}
+					<input type="hidden" id="Month" name="Month" value="{{month}}">
+					<b>Month</b>: {{month}}
+					<input type="hidden" id="Day" name="Day" value="{{day}}">
+					<b>Day</b>: {{day}}
+					<input type="hidden" id="Room" name="Room" value="{{room}}">
+					<b>Room</b>: {{room}}
+					<input type="hidden" id="Username" name="Username" value="{{username}}">
+					<b>Username</b>: {{username}}
+				</div>
+
+				<!-- Morning -->
+				<div class="row offset-sm-2">
+
+					<!-- Morning Time -->
+					<div class="col-sm-4 border">
+						<div class="text-center mt-4">	
+							<br> Morning 
+							<br>8:45 - 12:00
+						</div>
+					</div>
+
+					<!-- Morning Shifts -->
+					<div class="col-sm-6 border">
+						<div class="input-group p-1 my-1">
+							<input name="morningshift0" placeholder="Available" class="form-control text-center" type="text" value="{{actualMorning[0]}}" readonly>
+						</div>
+
+						<div class="input-group p-1 my-1">
+							<input name="morningshift1" placeholder="Available" class="form-control text-center" type="text" value="{{actualMorning[1]}}" readonly>
+						</div>
+
+						<div class="input-group p-1 my-1">
+							<input name="morningshift2" placeholder="Available" class="form-control text-center" type="text" value="{{actualMorning[2]}}" readonly>
+						</div>
+					</div>
+				</div>
+
+				<!-- Lunch -->
+				<div class="row offset-sm-2">
+					<!-- Lunch Time -->
+					<div class="col-sm-4 border">
+						<div class="text-center mt-4">
+							<br> Lunch 
+							<br>11:50 - 1:00
+						</div>
+					</div>
+
+					<div class="col-sm-6 border">
+						<div class="input-group p-1 my-1">
+							<input name="lunchshift0" placeholder="Available" class="form-control text-center" type="text" value="{{actualLunch[0]}}" readonly>
+						</div>
+
+						<div class="input-group p-1 my-1">
+							<input name="lunchshift1" placeholder="Available" class="form-control text-center" type="text" value="{{actualLunch[1]}}" readonly>
+						</div>
+
+						<div class="input-group p-1 my-1">
+							<input name="lunchshift2" placeholder="Available" class="form-control text-center" type="text" value="{{actualLunch[2]}}" readonly>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<!-- Afternoon -->
+				<div class="row offset-sm-2">
+					<!-- Afternoon Time -->
+					<div class="col-sm-4 border">
+						<div class="text-center mt-4">
+							<br> Afternoon
+							<br>12:50 - 3:45
+						</div>
+					</div>
+
+					<!-- Afternoon shift-->
+					<div class="col-sm-6 border">
+						<div class="input-group p-1 my-1">
+							<input name="afternoonshift0" placeholder="Available" class="form-control text-center" type="text" value="{{actualAfternoon[0]}}" readonly>
+						</div>
+
+						<div class="input-group p-1 my-1">
+							<input name="afternoonshift1" placeholder="Available" class="form-control text-center" type="text" value="{{actualAfternoon[1]}}" readonly>
+						</div>	
+
+						<div class="input-group p-1 my-1">
+							<input name="afternoonshift2" placeholder="Available" class="form-control text-center" type="text" value="{{actualAfternoon[2]}}" readonly>
+						</div>
+					</div>
+				</div>
+
+
+			</main>
+
+			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+			<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<!-- Load own script -->
+			<!--Full calendar script-->
+			<script src="../static/js/schedule.js"></script>
+
+			<!-- Icons -->
+			<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+			<script>
+				feather.replace();
+			</script>
+
+		</body>
+		</html>
